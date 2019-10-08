@@ -1,0 +1,7 @@
+/build
+/ExtLibs/*
+!/ExtLibs/Eigen
+!/ExtLibs/tclap
+!/ExtLibs/Alembic
+!/ExtLibs/FBXSDK
+!/ExtLibs/zlib

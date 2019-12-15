@@ -90,6 +90,24 @@ public:
 	//! Bind transformation update, 0=keep original, 1=set translations to p-norm centroids (using #transAffineNorm) and rotations to identity
 	int bindUpdate;
 
+	/** @brief Constructor and setting default parameters
+	*/
+	DemBonesExt(): bindUpdate(0) {
+		clear();
+	}
+
+	/** @brief Clear all data
+	*/
+	void clear() {
+		fTime.resize(0);
+		boneName.resize(0);
+		parent.resize(0);
+		bind.resize(0, 0);
+		preMulInv.resize(0, 0);
+		rotOrder.resize(0, 0);
+		DemBones::clear();
+	}
+
 	/** @brief Local rotations, translations and global bind matrices of a subject
 		@details Required all data in the base class: #u, #fv, #nV, #v, #nF, #fStart, #subjectID, #nS, #m, #w, #nB
 		

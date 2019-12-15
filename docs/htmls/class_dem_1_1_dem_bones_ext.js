@@ -8,6 +8,8 @@ var class_dem_1_1_dem_bones_ext =
     [ "Vector3", "class_dem_1_1_dem_bones_ext.html#af058734937a4b845b089291d4392f8ef", null ],
     [ "Vector4", "class_dem_1_1_dem_bones_ext.html#a033b6fd2dcf075cd48ed433f8a33cca1", null ],
     [ "VectorX", "class_dem_1_1_dem_bones_ext.html#ae4ea2e0183a87df169cb893c1a699709", null ],
+    [ "DemBonesExt", "class_dem_1_1_dem_bones_ext.html#a582382217aeefd8d2fb93bcb6aad9875", null ],
+    [ "clear", "class_dem_1_1_dem_bones_ext.html#a9fd6e95de36adee0d487786315da551f", null ],
     [ "computeRTB", "class_dem_1_1_dem_bones_ext.html#a4be2b221fa273518adbd3fa2e2bc86d0", null ],
     [ "bind", "class_dem_1_1_dem_bones_ext.html#a85422fd18d48c40485f05d77b1c4cf4d", null ],
     [ "bindUpdate", "class_dem_1_1_dem_bones_ext.html#a92939c0de147f8075754d9cbf66113fc", null ],

@@ -152,7 +152,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dem_1_1_dem_bones.html#aa5bb61bfa1a60d355f4cce7f9cc60d5c">DemBones</a> ()</td></tr>
 <tr class="memdesc:aa5bb61bfa1a60d355f4cce7f9cc60d5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor and setting default parameters. <br /></td></tr>
 <tr class="separator:aa5bb61bfa1a60d355f4cce7f9cc60d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18bcd81e4238a4a298c4ee4ca78ae2fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dem_1_1_dem_bones.html#a18bcd81e4238a4a298c4ee4ca78ae2fb">clear</a> ()</td></tr>
+<tr class="memitem:a18bcd81e4238a4a298c4ee4ca78ae2fb"><td class="memItemLeft" align="right" valign="top"><a id="a18bcd81e4238a4a298c4ee4ca78ae2fb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dem_1_1_dem_bones.html#a18bcd81e4238a4a298c4ee4ca78ae2fb">clear</a> ()</td></tr>
+<tr class="memdesc:a18bcd81e4238a4a298c4ee4ca78ae2fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all data. <br /></td></tr>
 <tr class="separator:a18bcd81e4238a4a298c4ee4ca78ae2fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1fcf96f35f6c4662fd95998225b9bda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dem_1_1_dem_bones.html#af1fcf96f35f6c4662fd95998225b9bda">init</a> ()</td></tr>
 <tr class="memdesc:af1fcf96f35f6c4662fd95998225b9bda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize missing skinning weights and/or bone transformations.  <a href="class_dem_1_1_dem_bones.html#af1fcf96f35f6c4662fd95998225b9bda">More...</a><br /></td></tr>
@@ -324,34 +326,6 @@ class Dem::DemBones&lt; _Scalar, _AniMeshScalar &gt;</h3>
 <p>Callback functions and read-only values can be used to report progress: <a class="el" href="class_dem_1_1_dem_bones.html#a14f83e468b4a1eb6e2c6c951e7b5a4d3" title="Callback function invoked before each spliting of bone clusters in initialization.">cbInitSplitBegin()</a>, <a class="el" href="class_dem_1_1_dem_bones.html#aeb37e92f6b19ed95f4d2793c5f3dd300" title="Callback function invoked after each spliting of bone clusters in initialization.">cbInitSplitEnd()</a>, <a class="el" href="class_dem_1_1_dem_bones.html#af43507c4ae91a4bf6550bc2afc25c023" title="Callback function invoked before each global iteration update.">cbIterBegin()</a>, <a class="el" href="class_dem_1_1_dem_bones.html#a14c76ee13ad4bd1892a5a00aee5b6d7b" title="Callback function invoked after each global iteration update.">cbIterEnd()</a>, <a class="el" href="class_dem_1_1_dem_bones.html#ac4698b8e39c770e51aea7122689edcdf" title="Callback function invoked before each skinning weights update.">cbWeightsBegin()</a>, <a class="el" href="class_dem_1_1_dem_bones.html#a9dc51d56fe59c8c3e1e221b9819360f9" title="Callback function invoked after each skinning weights update.">cbWeightsEnd()</a>, <a class="el" href="class_dem_1_1_dem_bones.html#a5d5a50f2d4622a4823065cdca03ac9aa" title="Callback function invoked before each bone transformations update.">cbTranformationsBegin()</a>, <a class="el" href="class_dem_1_1_dem_bones.html#a8008b672232b4d2f4081e00eea2ff062" title="Callback function invoked after each bone transformations update.">cbTransformationsEnd()</a>, <a class="el" href="class_dem_1_1_dem_bones.html#a938532a49b8ae162b866f9b59a75a7ab" title="Callback function invoked before each local bone transformations update iteration.">cbTransformationsIterBegin()</a>, <a class="el" href="class_dem_1_1_dem_bones.html#abeafdad7ecf17d7d6e9bd8685d5ee91b" title="Callback function invoked after each local bone transformations update iteration.">cbTransformationsIterEnd()</a>, <a class="el" href="class_dem_1_1_dem_bones.html#a6391078901046e3acbd582dba6654fdd" title="Callback function invoked before each local weights update iteration.">cbWeightsIterBegin()</a>, <a class="el" href="class_dem_1_1_dem_bones.html#add033742fc48d3c367be2ea4d687343c" title="Callback function invoked after each local weights update iteration.">cbWeightsIterEnd()</a>, <a class="el" href="class_dem_1_1_dem_bones.html#a050b398499f5daa9e42119b0774f25d0">rmse()</a>, <a class="el" href="class_dem_1_1_dem_bones.html#a06065f12b701c9bb556b7a79d14e984b" title="[zero indexed, read only] Current global iteration number that can be used for callback functions">iter</a>, <a class="el" href="class_dem_1_1_dem_bones.html#aed55acae84af67a7e958c830b821e747" title="[zero indexed, read only] Current bone transformations update iteration number that can be used for c...">iterTransformations</a>, <a class="el" href="class_dem_1_1_dem_bones.html#aef1b9e1d0815f32c8f8374376c8d2c22" title="[zero indexed, read only] Current weights update iteration number that can be used for callback funct...">iterWeights</a>.</p>
 <p><b>_Scalar</b> is the floating-point data type. <b>_AniMeshScalar</b> is the floating-point data type of mesh sequence <a class="el" href="class_dem_1_1_dem_bones.html#a276046cc5a2a13802762d65c17ec67fb" title="Animated mesh sequence, size = [3*nF, nV], v.col(i).segment(3*k, 3) is the position of vertex i at fr...">v</a>. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a18bcd81e4238a4a298c4ee4ca78ae2fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18bcd81e4238a4a298c4ee4ca78ae2fb">&#9670;&nbsp;</a></span>clear()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class _Scalar, class _AniMeshScalar&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_dem_1_1_dem_bones.html">Dem::DemBones</a>&lt; _Scalar, _AniMeshScalar &gt;::clear </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Clear all data </p>
-
-</div>
-</div>
 <a id="ac8d2821c730539490ad6ce956a0b62a6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac8d2821c730539490ad6ce956a0b62a6">&#9670;&nbsp;</a></span>compute()</h2>
 

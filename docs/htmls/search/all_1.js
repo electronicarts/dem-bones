@@ -12,7 +12,7 @@ var searchData=
   ['cbweightsend_13',['cbWeightsEnd',['../class_dem_1_1_dem_bones.html#a9dc51d56fe59c8c3e1e221b9819360f9',1,'Dem::DemBones']]],
   ['cbweightsiterbegin_14',['cbWeightsIterBegin',['../class_dem_1_1_dem_bones.html#a6391078901046e3acbd582dba6654fdd',1,'Dem::DemBones']]],
   ['cbweightsiterend_15',['cbWeightsIterEnd',['../class_dem_1_1_dem_bones.html#add033742fc48d3c367be2ea4d687343c',1,'Dem::DemBones']]],
-  ['clear_16',['clear',['../class_dem_1_1_dem_bones.html#a18bcd81e4238a4a298c4ee4ca78ae2fb',1,'Dem::DemBones']]],
+  ['clear_16',['clear',['../class_dem_1_1_dem_bones.html#a18bcd81e4238a4a298c4ee4ca78ae2fb',1,'Dem::DemBones::clear()'],['../class_dem_1_1_dem_bones_ext.html#a9fd6e95de36adee0d487786315da551f',1,'Dem::DemBonesExt::clear()']]],
   ['compute_17',['compute',['../class_dem_1_1_dem_bones.html#ac8d2821c730539490ad6ce956a0b62a6',1,'Dem::DemBones']]],
   ['computertb_18',['computeRTB',['../class_dem_1_1_dem_bones_ext.html#a4be2b221fa273518adbd3fa2e2bc86d0',1,'Dem::DemBonesExt']]],
   ['computetranformations_19',['computeTranformations',['../class_dem_1_1_dem_bones.html#a673287121735ea64e0e4c244bacc432b',1,'Dem::DemBones']]],

@@ -149,7 +149,7 @@ public:
 	//! [<tt>zero indexed</tt>, <tt>read only</tt>] Current weights update iteration number that can be used for callback functions
 	const int& iterWeights;
 	
-	/** Clear all data
+	/** @brief Clear all data
 	*/
 	void clear() {
 		nV=nB=nS=nF=0;

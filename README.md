@@ -2,6 +2,7 @@
 
 # Dem Bones
 [![BSD3 Clause](https://img.shields.io/badge/license-BSD3_Clause-blue.svg)](LICENSE.md)
+[![Version](https://img.shields.io/badge/version-1.1.0-green.svg)](VERSION.md)
 
 This repository contains an implementation of [Smooth Skinning Decomposition with Rigid Bones](http://binh.graphics/papers/2012sa-ssdr/), 
 an automated algorithm to extract the *Linear Blend Skinning* (LBS) with bone transformations from a set of example meshes. 
@@ -24,13 +25,12 @@ Tested platforms:
 - LLVM 9.0.0 (Homebrew) on MacOS 10.13.6 x64 (experimental).
 
 Compiling steps:
-1. Install [cmake 3.15](https://cmake.org/)
+1. Install [cmake](https://cmake.org/)
 2. Copy the following libraries to their respective folders in `ExtLibs` so that [cmake](https://cmake.org/) can find these paths:
     - [Eigen 3.3.7](https://eigen.tuxfamily.org/) with path `ExtLibs/Eigen/Eigen/Dense`,
-    - [Alembic (from Maya 2019 DevKit)](https://www.autodesk.com/developer-network/platform-technologies/maya) with path `ExtLibs/Alembic/include/Alembic/Abc/All.h`,
-    - [FBXSDK 2019.0](https://www.autodesk.com/developer-network/platform-technologies/fbx-sdk-2019-0) with path `ExtLibs/FBXSDK/include/fbxsdk.h`,
+    - [Alembic (from Maya 2020 Update 2 win64 DevKit)](https://www.autodesk.com/developer-network/platform-technologies/maya) with path `ExtLibs/Alembic/include/Alembic/Abc/All.h`,
+    - [FBXSDK 2020.0.1](https://www.autodesk.com/developer-network/platform-technologies/fbx-sdk-2020-0) with path `ExtLibs/FBXSDK/include/fbxsdk.h`,
     - [tclap 1.2.2](http://tclap.sourceforge.net/) with path `ExtLibs/tclap/include/tclap/CmdLine.h`,
-	- **For Windows only:** [zlib (from Maya 2019 DevKit)](https://www.autodesk.com/developer-network/platform-technologies/maya) with path `ExtLibs/zlib/zlib.lib`.
 3. Run:
 ```
 mkdir build

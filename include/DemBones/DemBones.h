@@ -80,7 +80,7 @@ public:
 
 	//! [@c parameter] Number of clustering update iterations in the initalization, @c default = 10
 	int nInitIters;
-	
+
 	//! [@c parameter] Number of bone transformations update iterations per global iteration, @c default = 5
 	int nTransIters;
 	//! [@c parameter] Translations affinity soft constraint, @c default = 10.0
@@ -101,7 +101,7 @@ public:
 	
 	/** @brief Constructor and setting default parameters
 	*/
-	DemBones():	nIters(30), nInitIters(10), 
+	DemBones():	nIters(30), nInitIters(10),
 			nTransIters(5),	transAffine(_Scalar(10)), transAffineNorm(_Scalar(4)),
 			nWeightsIters(3), nnz(8), weightsSmooth(_Scalar(1e-4)), weightsSmoothStep(_Scalar(1)),
 			weightEps(_Scalar(1e-15)),
@@ -129,11 +129,17 @@ public:
 	//! Skinning weights, @c size = [#nB, #nV], #w.@a col(@p i) are the skinning weights of vertex @p i, #w(@p j, @p i) is the influence of bone @p j to vertex @p i
 	SparseMatrix w;
 
+	//! Skinning weights lock control, @c size = #nV, #lockW(@p i) is the amount of input skinning weights will be kept for vertex @p i, where 0 (no lock) <= #lockW(@p i) <= 1 (full lock)
+	VectorX lockW;
+
 	/** @brief Bone transformations, @c size = [4*#nF*4, 4*#nB], #m.@a blk4(@p k, @p j) is the 4*4 relative transformation matrix of bone @p j at frame @p k
 		@details Note that the transformations are relative, that is #m.@a blk4(@p k, @p j) brings the global transformation of bone @p j from the rest pose to the pose at frame @p k.
 	*/
 	MatrixX m;
-	
+
+	//! Bone transformation lock control, @c size = #nB, #lockM(@p j) is the amount of input transformations will be kept for bone @p j, where #lockM(@p j) = 0 (no lock) or 1 (lock)
+	Eigen::VectorXi lockM;
+
 	//! Animated mesh sequence, @c size = [3*#nF, #nV], #v.@a col(@p i).@a segment(3*@p k, 3) is the position of vertex @p i at frame @p k
 	Eigen::Matrix<_AniMeshScalar, Eigen::Dynamic, Eigen::Dynamic> v;
 	
@@ -157,7 +163,9 @@ public:
 		subjectID.resize(0);
 		u.resize(0, 0);
 		w.resize(0, 0);
+		lockW.resize(0);
 		m.resize(0, 0);
+		lockM.resize(0);
 		v.resize(0, 0);
 		fv.resize(0);
 		modelSize=-1;
@@ -189,23 +197,28 @@ public:
 				bool cont=true;
 				while (cont) {
 					cbInitSplitBegin();
-					split(targetNB, nnz);
-					cont=(nB<targetNB);
+					int prev=nB;
+					split(targetNB, 3);
 					for (int rep=0; rep<nInitIters; rep++) {
 						computeTransFromLabel();
 						computeLabel();
-						pruneBones(nnz);
+						pruneBones(3);
 					}
+					cont=(nB<targetNB)&&(nB>prev);
 					cbInitSplitEnd();
 				}
-				m.conservativeResize(nF*4, nB*4);
+				lockM=VectorXi::Zero(nB);
 				labelToWeights();
 			} else initWeights(); //Has transformations
 		} else { //Has skinning weights
 			if (((int)m.rows()!=nF*4)||((int)m.cols()!=nB*4)) { //No transformation
 				m=Matrix4::Identity().replicate(nF, nB);
+				lockM=VectorXi::Zero(nB);
 			}
 		}
+
+		if (lockW.size()!=nV) lockW=VectorX::Zero(nV);
+		if (lockM.size()!=nB) lockM=VectorXi::Zero(nB);
 	}
 
 	/** @brief Update bone transformations by running #nTransIters iterations with #transAffine and #transAffineNorm regularizers
@@ -215,8 +228,8 @@ public:
 			- Number of bones: #nB
 
 		Optional input data:
-			- Skinning weights: #w
-			- Bone transformations: #m
+			- Skinning weights: #w, #lockW
+			- Bone transformations: #m, #lockM
 
 		Output: #m. Missing #w and/or #m (with zero size) will be initialized by init().
 	*/
@@ -233,13 +246,13 @@ public:
 			cbTransformationsIterBegin();
 			#pragma omp parallel for
 			for (int k=0; k<nF; k++)
-				for (int j=0; j<nB; j++) {
-					Matrix4 qpT=vuT.blk4(k, j);
-					for (int it=uuT.outerIdx(j); it<uuT.outerIdx(j + 1); it++)
-						if (uuT.innerIdx(it)!=j) qpT-=m.blk4(k, uuT.innerIdx(it))*uuT.val.blk4(subjectID(k), it);
-					qpT2m(qpT, k, j);
-	
-				}
+				for (int j=0; j<nB; j++) 
+					if (lockM(j)==0) {
+						Matrix4 qpT=vuT.blk4(k, j);
+						for (int it=uuT.outerIdx(j); it<uuT.outerIdx(j+1); it++)
+							if (uuT.innerIdx(it)!=j) qpT-=m.blk4(k, uuT.innerIdx(it))*uuT.val.blk4(subjectID(k), it);
+						qpT2m(qpT, k, j);
+					}
 			cbTransformationsIterEnd();
 		}
 		
@@ -253,8 +266,8 @@ public:
 			- Number of bones: #nB
 
 		Optional input data:
-			- Skinning weights: #w
-			- Bone transformations: #m
+			- Skinning weights: #w, #lockW
+			- Bone transformations: #m, #lockM
 
 		Output: #w. Missing #w and/or #m (with zero size) will be initialized by init().
 
@@ -278,17 +291,17 @@ public:
 			compute_ws();
 			compute_aTb();
 
-			double reg=pow(modelSize, 2)*nF*weightsSmooth;
+			double reg_scale=pow(modelSize, 2)*nF;
 
 			trip.clear();
 			#pragma omp parallel for
 			for (int i=0; i<nV; i++) {
 				MatrixX aTai;
 				compute_aTa(i, aTai);
-				aTai+=reg*MatrixX::Identity(nB, nB);
-				VectorX aTbi=aTb.col(i)+reg*ws.col(i);
+				aTai=(1-lockW(i))*(aTai/reg_scale+weightsSmooth*MatrixX::Identity(nB, nB))+lockW(i)*MatrixX::Identity(nB, nB);
+				VectorX aTbi=(1-lockW(i))*(aTb.col(i)/reg_scale+weightsSmooth*ws.col(i))+lockW(i)*w.col(i);
 
-				VectorX x=ws.col(i);
+				VectorX x=(1-lockW(i))*ws.col(i)+lockW(i)*w.col(i);
 				Eigen::ArrayXi idx=Eigen::ArrayXi::LinSpaced(nB, 0, nB-1);
 				std::sort(idx.data(), idx.data()+nB, [&x](int i1, int i2) { return x(i1)>x(i2); });
 				int nnzi=std::min(nnz, nB);
@@ -507,6 +520,7 @@ private:
 		for (int i=0; i<nV; i++) trip[i]=Triplet(label(i), i, _Scalar(1));
 		w.resize(nB, nV);
 		w.setFromTriplets(trip.begin(), trip.end());
+		lockW=VectorX::Zero(nV);
 	}
 
 	/** Split bone clusters
@@ -523,20 +537,37 @@ private:
 		}
 		for (int j=0; j<nB; j++) if (s(j)!=0) cu.col(j)/=_Scalar(s(j));
 
-		//Seed & cluster error
-		Eigen::VectorXi seed=Eigen::VectorXi::Constant(nB, -1);
-		VectorX gMax(nB);
+		//Distance to centroid & error
+		VectorX d(nV), e(nV);
+		VectorX minD=VectorX::Constant(nB, std::numeric_limits<_Scalar>::max());
+		VectorX minE=VectorX::Constant(nB, std::numeric_limits<_Scalar>::max());
 		VectorX ce=VectorX::Zero(nB);
 
 		#pragma omp parallel for
 		for (int i=0; i<nV; i++) {
 			int j=label(i);
-
-			double e=errorVtxBone(i, j, false);
+			d(i)=(u.col(i)-cu.col(j)).norm();
+			e(i)=sqrt(errorVtxBone(i, j, false));
+			if (d(i)<minD(j)) {
+				#pragma omp critical
+				minD(j)=std::min(minD(j), d(i));
+			}
+			if (e(i)<minE(j)) {
+				#pragma omp critical
+				minE(j)=std::min(minE(j), e(i));
+			}
 			#pragma omp atomic
-			ce(j)+=e;
+			ce(j)+=e(i);
+		}
 
-			double tmp=e*(u.col(i)-cu.col(j)).squaredNorm();
+		//Seed
+		Eigen::VectorXi seed=Eigen::VectorXi::Constant(nB, -1);
+		VectorX gMax(nB);
+
+		#pragma omp parallel for
+		for (int i=0; i<nV; i++) {
+			int j=label(i);
+			double tmp=abs((e(i)-minE(j))*(d(i)-minD(j)));
 
 			if ((seed(j)==-1)||(tmp>gMax(j))) {
 				#pragma omp critical

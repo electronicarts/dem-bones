@@ -48,8 +48,7 @@ public:
 		for (int j=0; j!=name.size(); j++) {
 			FbxSkeleton* lSkeletonAttribute=FbxSkeleton::Create(lScene, name[j].c_str());
 			lSkeletonAttribute->SetSkeletonType(FbxSkeleton::eLimb);
-			lSkeletonAttribute->
-			Size.Set(radius);
+			lSkeletonAttribute->Size.Set(radius);
 			FbxNode* lSkeleton=FbxNode::Create(lScene, name[j].c_str());
 			lSkeleton->SetNodeAttribute(lSkeletonAttribute);
 			lSkeleton->SetRotationOrder(FbxNode::eSourcePivot, eEulerXYZ);

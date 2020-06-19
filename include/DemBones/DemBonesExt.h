@@ -105,7 +105,7 @@ public:
 		bind.resize(0, 0);
 		preMulInv.resize(0, 0);
 		rotOrder.resize(0, 0);
-		DemBones::clear();
+		DemBones<_Scalar, _AniMeshScalar>::clear();
 	}
 
 	/** @brief Local rotations, translations and global bind matrices of a subject
@@ -177,9 +177,8 @@ private:
 		for (int i=0; i<nV; i++)
 			for (typename SparseMatrix::InnerIterator it(w, i); it; ++it)
 				c.col(it.row())+=pow(it.value(), transAffineNorm)*u.vec3(s, i).homogeneous();
-		b=MatrixX::Identity(4, 4).replicate(1, nB);
 		for (int j=0; j<nB; j++)
-			if (c(3, j)!=0)	b.transVec(0, j)=c.col(j).template head<3>()/c(3, j);
+			if ((c(3, j)!=0)&&(lockM(j)==0)) b.transVec(0, j)=c.col(j).template head<3>()/c(3, j);
 	}
 
 	/** Global bind pose
@@ -189,16 +188,17 @@ private:
 	*/
 	void computeBind(int s, MatrixX& b) {
 		if (bind.size()==0) {
+			lockM=VectorXi::Zero(nB);
 			bind.resize(nS*4, nB*4);
-			MatrixX b;
-			for (int k=0; k<nS; k++) computeCentroids(k, b);
-			bind.block(4*s, 0, 4, 4*nB)=b;
+			for (int k=0; k<nS; k++) {
+				b=MatrixX::Identity(4, 4).replicate(1, nB);
+				computeCentroids(k, b);
+				bind.block(4*s, 0, 4, 4*nB)=b;
+			}
 		}
-
-		switch (bindUpdate) {
-			case 0:	b=bind.block(4*s, 0, 4, 4*nB); break;
-			case 1: computeCentroids(s, b); break;
-		}
+		
+		b=bind.block(4*s, 0, 4, 4*nB);
+		if (bindUpdate==1) computeCentroids(s, b);
 	}
 
 	/** Euler angles from rotation matrix

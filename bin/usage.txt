@@ -73,6 +73,14 @@ Where:
 
    Dem Bones - (c) Electronic Arts 2019
 
-   Note: this tool only handles clean input data, i.e. only one piece of
+   1. This tool only handles clean input data, i.e. only one piece of
    geometry with one skinCluster and no excessive joint.
+
+   2. To hard-lock the transformation of a bone: in the input fbx files,
+   create a bool attribute for the joint with name "demLock" and set its
+   value to "true".
+
+   3. To soft-lock skinning weights of a vertex: in the input fbx files,
+   paint the vertex color to grayscale.The closer the color to white, the
+   more skinning weights of the vertex are preserved.
 

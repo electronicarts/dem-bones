@@ -32,6 +32,8 @@ var class_dem_1_1_dem_bones =
     [ "iter", "class_dem_1_1_dem_bones.html#a06065f12b701c9bb556b7a79d14e984b", null ],
     [ "iterTransformations", "class_dem_1_1_dem_bones.html#aed55acae84af67a7e958c830b821e747", null ],
     [ "iterWeights", "class_dem_1_1_dem_bones.html#aef1b9e1d0815f32c8f8374376c8d2c22", null ],
+    [ "lockM", "class_dem_1_1_dem_bones.html#a8391d148fee49d4c056b3b62bc1c7c08", null ],
+    [ "lockW", "class_dem_1_1_dem_bones.html#a153f756d2284f955e35229f15753264c", null ],
     [ "m", "class_dem_1_1_dem_bones.html#a3462ee570b8b809ecff8739000783813", null ],
     [ "nB", "class_dem_1_1_dem_bones.html#aa0b51ddfe06be09fdf3c74a00f5dd867", null ],
     [ "nF", "class_dem_1_1_dem_bones.html#aa9cf74a32230ec9c61096a58cdc555bf", null ],

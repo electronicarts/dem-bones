@@ -5,7 +5,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set(CMAKE_CONFIGURATION_TYPES "Release;" CACHE STRING "" FORCE)
 
 include_directories("${PROJECT_SOURCE_DIR}/include")
-find_package(Eigen REQUIRED)
+find_package(EIGEN REQUIRED)
 include_directories("${EIGEN_INCLUDE_DIR}")
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
@@ -27,7 +27,7 @@ add_executable(DemBonesCmd "${CMD_SOURCE}")
 set_target_properties(DemBonesCmd PROPERTIES OUTPUT_NAME "DemBones")
 
 find_package(TCLAP)
-find_package(Alembic)
+find_package(ALEMBIC)
 find_package(FBXSDK)
 
 target_include_directories(DemBonesCmd PUBLIC
@@ -40,12 +40,10 @@ target_include_directories(DemBonesCmd PUBLIC
 target_link_libraries(DemBonesCmd PUBLIC 
 	"${FBXSDK_LIBS}"
 	"${ALEMBIC_LIBS}"
-	"${ZLIB_LIBS}"
 )
 
 if(WIN32)
-	find_package(Zlib)
-	target_link_libraries(DemBonesCmd PUBLIC "${ZLIB_LIBS}")
+	set_target_properties(DemBonesCmd PROPERTIES LINK_FLAGS "/force:multiple")
 endif()
 
 if(APPLE)

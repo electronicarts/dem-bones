@@ -65,7 +65,9 @@ int main(int argc, char** argv) {
 	//http://tclap.sourceforge.net/manual.html
 	//http://tclap.sourceforge.net/html/annotated.html
 	CmdLine cmd("Dem Bones - (c) Electronic Arts 2019\n"
-		"    Note: this tool only handles clean input data, i.e. only one piece of geometry with one skinCluster and no excessive joint.", '=', "1.0");
+"    1. This tool only handles clean input data, i.e. only one piece of geometry with one skinCluster and no excessive joint.\n\
+     2. To hard-lock the transformation of a bone: in the input fbx files, create a bool attribute for the joint with name \"demLock\" and set its value to \"true\".\n\
+     3. To soft-lock skinning weights of a vertex: in the input fbx files, paint the vertex color to grayscale.The closer the color to white, the more skinning weights of the vertex are preserved.", '=', "1.1");
 
 	ValueArg<string> logFile("", "log", "log file name", false, "", "filename", cmd);
 	ValueArg<int> dbg("", "dbg", "debug level", false, 1, "int", cmd);
@@ -81,8 +83,8 @@ int main(int argc, char** argv) {
 	ValueArg<int> nTransIters("", "nTransIters", "number of transformation update iterations per global iteration", false, model.nTransIters, "int", cmd);
 
 	ValueArg<int> nIters("n", "nIters", "number of global iterations", false, model.nIters, "int", cmd);
-
 	ValueArg<int> nInitIters("", "nInitIters", "number iterations per init cluster splitting", false, model.nInitIters, "int", cmd);
+
 	ValueArg<int> nBones("b", "nBones", "number of bones", false, -1, "int", cmd);
 
 	MultiArg<string> outFile("o", "out", "output (fbx files), each outut correspond to one abc file", true, "filename", cmd);

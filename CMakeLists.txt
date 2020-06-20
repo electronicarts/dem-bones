@@ -44,11 +44,14 @@ target_link_libraries(DemBonesCmd PUBLIC
 
 if(WIN32)
 	set_target_properties(DemBonesCmd PROPERTIES LINK_FLAGS "/force:multiple")
-endif()
-
-if(APPLE)
+elseif(APPLE)
 	set_target_properties(DemBonesCmd PROPERTIES LINK_FLAGS "-Wl,-F/Library/Frameworks")
 	target_link_libraries(DemBonesCmd PUBLIC "-framework CoreFoundation -lxml2 -lz -liconv")
+	set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -Wno-switch -Wno-return-stack-address")
+	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wno-switch -Wno-return-stack-address")
+else()
+	set_target_properties(DemBonesCmd PROPERTIES LINK_FLAGS "-Wl")
+	target_link_libraries(DemBonesCmd PUBLIC "-lxml2 -lz -liconv")
 	set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -Wno-switch -Wno-return-stack-address")
 	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wno-switch -Wno-return-stack-address")
 endif()

@@ -65,9 +65,9 @@ int main(int argc, char** argv) {
 	//http://tclap.sourceforge.net/manual.html
 	//http://tclap.sourceforge.net/html/annotated.html
 	CmdLine cmd("Dem Bones - (c) Electronic Arts 2019\n"
-"    1. This tool only handles clean input data, i.e. only one piece of geometry with one skinCluster and no excessive joint.\n\
-     2. To hard-lock the transformation of a bone: in the input fbx files, create a bool attribute for the joint with name \"demLock\" and set its value to \"true\".\n\
-     3. To soft-lock skinning weights of a vertex: in the input fbx files, paint the vertex color to grayscale.The closer the color to white, the more skinning weights of the vertex are preserved.", '=', "1.1");
+"    - This tool only handles clean input data, i.e. only one piece of geometry with one skinCluster and no excessive joint.\n\
+     - To hard-lock the transformations of bones: in the input fbx files, create bool attributes for joint nodes (bones) with name \"demLock\" and set the value to \"true\".\n\
+     - To soft-lock skinning weights of vertices: in the input fbx files, paint per-vertex colors in gray-scale. The closer the color to white, the more skinning weights of the vertex are preserved.", '=', "1.1.0");
 
 	ValueArg<string> logFile("", "log", "log file name", false, "", "filename", cmd);
 	ValueArg<int> dbg("", "dbg", "debug level", false, 1, "int", cmd);

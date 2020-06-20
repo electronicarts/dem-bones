@@ -37,7 +37,7 @@ mkdir build
 cd build
 cmake ..
 ```
-4. For Windows, launch and compile the solution `dem-bones.sln` with Visual Studio. For MacOS, run `$ make install`
+4. For Windows, launch and compile the solution `dem-bones.sln` with Visual Studio. For MacOS or Linux, run `$ make install`
 
 > **Note for MacOS** 
 > - Apple Clang (default compiler) does not support OpenMP and Eigen. We recommend using [LLVM](https://formulae.brew.sh/formula/llvm). 

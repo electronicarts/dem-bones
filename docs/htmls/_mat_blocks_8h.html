@@ -108,27 +108,154 @@ $(document).ready(function(){initNavTree('_mat_blocks_8h.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ad6bfbb18a677b025229474998396c667"><td class="memItemLeft" align="right" valign="top"><a id="ad6bfbb18a677b025229474998396c667"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_mat_blocks_8h.html#ad6bfbb18a677b025229474998396c667">blk4</a>(k,  j)&#160;&#160;&#160;template block&lt;4, 4&gt;((k)*4, (j)*4)</td></tr>
-<tr class="memdesc:ad6bfbb18a677b025229474998396c667"><td class="mdescLeft">&#160;</td><td class="mdescRight">A 4*4 sub-block that represents a transformation matrix, typically <code>k</code> denotes frame number and <code>j</code> denotes bone index. <br /></td></tr>
+<tr class="memitem:ad6bfbb18a677b025229474998396c667"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_mat_blocks_8h.html#ad6bfbb18a677b025229474998396c667">blk4</a>(k,  j)&#160;&#160;&#160;template block&lt;4, 4&gt;((k)*4, (j)*4)</td></tr>
+<tr class="memdesc:ad6bfbb18a677b025229474998396c667"><td class="mdescLeft">&#160;</td><td class="mdescRight">A 4*4 sub-block that represents a transformation matrix, typically <code>k</code> denotes frame number and <code>j</code> denotes bone index.  <a href="_mat_blocks_8h.html#ad6bfbb18a677b025229474998396c667">More...</a><br /></td></tr>
 <tr class="separator:ad6bfbb18a677b025229474998396c667"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8911e62d9ea5214390af1c948c7fd4d"><td class="memItemLeft" align="right" valign="top"><a id="af8911e62d9ea5214390af1c948c7fd4d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_mat_blocks_8h.html#af8911e62d9ea5214390af1c948c7fd4d">rotMat</a>(k,  j)&#160;&#160;&#160;template block&lt;3, 3&gt;((k)*4, (j)*4)</td></tr>
-<tr class="memdesc:af8911e62d9ea5214390af1c948c7fd4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 3*3 rotation part or the transformation matrix <a class="el" href="_mat_blocks_8h.html#ad6bfbb18a677b025229474998396c667" title="A 4*4 sub-block that represents a transformation matrix, typically k denotes frame number and j denot...">blk4</a>(<code>k</code>, <code>j</code>) <br /></td></tr>
+<tr class="memitem:af8911e62d9ea5214390af1c948c7fd4d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_mat_blocks_8h.html#af8911e62d9ea5214390af1c948c7fd4d">rotMat</a>(k,  j)&#160;&#160;&#160;template block&lt;3, 3&gt;((k)*4, (j)*4)</td></tr>
+<tr class="memdesc:af8911e62d9ea5214390af1c948c7fd4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 3*3 rotation part or the transformation matrix <a class="el" href="_mat_blocks_8h.html#ad6bfbb18a677b025229474998396c667" title="A 4*4 sub-block that represents a transformation matrix, typically k denotes frame number and j denot...">blk4</a>(<code>k</code>, <code>j</code>)  <a href="_mat_blocks_8h.html#af8911e62d9ea5214390af1c948c7fd4d">More...</a><br /></td></tr>
 <tr class="separator:af8911e62d9ea5214390af1c948c7fd4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59df0c210b2ea616135f313a28a5333d"><td class="memItemLeft" align="right" valign="top"><a id="a59df0c210b2ea616135f313a28a5333d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_mat_blocks_8h.html#a59df0c210b2ea616135f313a28a5333d">transVec</a>(k,  j)&#160;&#160;&#160;col((j)*4+3).template segment&lt;3&gt;((k)*4)</td></tr>
-<tr class="memdesc:a59df0c210b2ea616135f313a28a5333d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 3*1 translation vector part or the transformation matrix <a class="el" href="_mat_blocks_8h.html#ad6bfbb18a677b025229474998396c667" title="A 4*4 sub-block that represents a transformation matrix, typically k denotes frame number and j denot...">blk4</a>(<code>k</code>, <code>j</code>) <br /></td></tr>
+<tr class="memitem:a59df0c210b2ea616135f313a28a5333d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_mat_blocks_8h.html#a59df0c210b2ea616135f313a28a5333d">transVec</a>(k,  j)&#160;&#160;&#160;col((j)*4+3).template segment&lt;3&gt;((k)*4)</td></tr>
+<tr class="memdesc:a59df0c210b2ea616135f313a28a5333d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 3*1 translation vector part or the transformation matrix <a class="el" href="_mat_blocks_8h.html#ad6bfbb18a677b025229474998396c667" title="A 4*4 sub-block that represents a transformation matrix, typically k denotes frame number and j denot...">blk4</a>(<code>k</code>, <code>j</code>)  <a href="_mat_blocks_8h.html#a59df0c210b2ea616135f313a28a5333d">More...</a><br /></td></tr>
 <tr class="separator:a59df0c210b2ea616135f313a28a5333d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25ecc71b082683565b54b7f2b8cd913c"><td class="memItemLeft" align="right" valign="top"><a id="a25ecc71b082683565b54b7f2b8cd913c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_mat_blocks_8h.html#a25ecc71b082683565b54b7f2b8cd913c">vec3</a>(k,  i)&#160;&#160;&#160;col(i).template segment&lt;3&gt;((k)*3)</td></tr>
-<tr class="memdesc:a25ecc71b082683565b54b7f2b8cd913c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A 3*1 sub-block that represents position of a vertex, typically <code>k</code> denotes frame number and <code>i</code> denotes vertex index. <br /></td></tr>
+<tr class="memitem:a25ecc71b082683565b54b7f2b8cd913c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_mat_blocks_8h.html#a25ecc71b082683565b54b7f2b8cd913c">vec3</a>(k,  i)&#160;&#160;&#160;col(i).template segment&lt;3&gt;((k)*3)</td></tr>
+<tr class="memdesc:a25ecc71b082683565b54b7f2b8cd913c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A 3*1 sub-block that represents position of a vertex, typically <code>k</code> denotes frame number and <code>i</code> denotes vertex index.  <a href="_mat_blocks_8h.html#a25ecc71b082683565b54b7f2b8cd913c">More...</a><br /></td></tr>
 <tr class="separator:a25ecc71b082683565b54b7f2b8cd913c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines some macros to access sub-blocks of packing transformation/position matrices for convenience. </p>
 <p>These definitions are not included by default although they are used in <code>DemBones</code> and <code>DemBonesExt</code> (they are undefined at the end of the files). </p>
-</div></div><!-- contents -->
+
+<p class="definition">Definition in file <a class="el" href="_mat_blocks_8h_source.html">MatBlocks.h</a>.</p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ad6bfbb18a677b025229474998396c667"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6bfbb18a677b025229474998396c667">&#9670;&nbsp;</a></span>blk4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define blk4</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">k, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">j&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;template block&lt;4, 4&gt;((k)*4, (j)*4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A 4*4 sub-block that represents a transformation matrix, typically <code>k</code> denotes frame number and <code>j</code> denotes bone index. </p>
+
+<p class="definition">Definition at line <a class="el" href="_mat_blocks_8h_source.html#l00019">19</a> of file <a class="el" href="_mat_blocks_8h_source.html">MatBlocks.h</a>.</p>
+
+</div>
+</div>
+<a id="af8911e62d9ea5214390af1c948c7fd4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8911e62d9ea5214390af1c948c7fd4d">&#9670;&nbsp;</a></span>rotMat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define rotMat</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">k, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">j&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;template block&lt;3, 3&gt;((k)*4, (j)*4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The 3*3 rotation part or the transformation matrix <a class="el" href="_mat_blocks_8h.html#ad6bfbb18a677b025229474998396c667" title="A 4*4 sub-block that represents a transformation matrix, typically k denotes frame number and j denot...">blk4</a>(<code>k</code>, <code>j</code>) </p>
+
+<p class="definition">Definition at line <a class="el" href="_mat_blocks_8h_source.html#l00022">22</a> of file <a class="el" href="_mat_blocks_8h_source.html">MatBlocks.h</a>.</p>
+
+</div>
+</div>
+<a id="a59df0c210b2ea616135f313a28a5333d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59df0c210b2ea616135f313a28a5333d">&#9670;&nbsp;</a></span>transVec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define transVec</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">k, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">j&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;col((j)*4+3).template segment&lt;3&gt;((k)*4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The 3*1 translation vector part or the transformation matrix <a class="el" href="_mat_blocks_8h.html#ad6bfbb18a677b025229474998396c667" title="A 4*4 sub-block that represents a transformation matrix, typically k denotes frame number and j denot...">blk4</a>(<code>k</code>, <code>j</code>) </p>
+
+<p class="definition">Definition at line <a class="el" href="_mat_blocks_8h_source.html#l00025">25</a> of file <a class="el" href="_mat_blocks_8h_source.html">MatBlocks.h</a>.</p>
+
+</div>
+</div>
+<a id="a25ecc71b082683565b54b7f2b8cd913c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25ecc71b082683565b54b7f2b8cd913c">&#9670;&nbsp;</a></span>vec3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vec3</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">k, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">i&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;col(i).template segment&lt;3&gt;((k)*3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A 3*1 sub-block that represents position of a vertex, typically <code>k</code> denotes frame number and <code>i</code> denotes vertex index. </p>
+
+<p class="definition">Definition at line <a class="el" href="_mat_blocks_8h_source.html#l00028">28</a> of file <a class="el" href="_mat_blocks_8h_source.html">MatBlocks.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

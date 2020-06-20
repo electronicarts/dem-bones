@@ -26,5 +26,5 @@ endif()
 include(FindPackageHandleStandardArgs)
 
 find_package_handle_standard_args(
-  ALEMBIC DEFAULT_MSG ALEMBIC_INCLUDE_DIR ALEMBIC_LIBS
+  Alembic DEFAULT_MSG ALEMBIC_INCLUDE_DIR ALEMBIC_LIBS
 )

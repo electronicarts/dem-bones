@@ -33,10 +33,10 @@ namespace Dem
 	-# Load required data in the base class:
 		- Rest shapes: DemBones::u, DemBones::fv, DemBones::nV
 		- Sequence: DemBones::v, DemBones::nF, DemBones::fStart, DemBones::subjectID, DemBones::nS
-		- Number of bones: DemBones::nB
+		- Number of bones DemBones::nB
 	-# Load optional data in the base class:
-		- Skinning weights: DemBones::w
-		- Bone transformations: DemBones::m
+		- Skinning weights DemBones::w and weights soft-lock DemBones::lockW
+		- Bone transformations DemBones::m and bones hard-lock DemBones::lockM
 	-# [@c optional] Set parameters in the base class: 
 		- DemBones::nIters
 		- DemBones::nInitIters
@@ -44,7 +44,7 @@ namespace Dem
 		- DemBones::nWeightsIters, DemBones::nnz, DemBones::weightsSmooth, DemBones::weightsSmoothStep, DemBones::weightEps
 	-# [@c optional] Setup extended class:
 		- Load data: DemBonesExt::parent, DemBonesExt::preMulInv, DemBonesExt::rotOrder, DemBonesExt::bind
-		- Set paramter: DemBonesExt::bindUpdate
+		- Set parameter DemBonesExt::bindUpdate
 	-# [@c optional] Override callback functions (cb...) in the base class @ref DemBones
 	-# Call decomposition function DemBones::compute(), DemBones::computeWeights(), DemBones::computeTranformations(), or DemBones::init()
 	-# [@c optional] Get local transformations/bind poses with DemBonesExt::computeRTB() 
@@ -207,18 +207,18 @@ public:
 					cont=(nB<targetNB)&&(nB>prev);
 					cbInitSplitEnd();
 				}
-				lockM=VectorXi::Zero(nB);
+				lockM=Eigen::VectorXi::Zero(nB);
 				labelToWeights();
 			} else initWeights(); //Has transformations
 		} else { //Has skinning weights
 			if (((int)m.rows()!=nF*4)||((int)m.cols()!=nB*4)) { //No transformation
 				m=Matrix4::Identity().replicate(nF, nB);
-				lockM=VectorXi::Zero(nB);
+				lockM=Eigen::VectorXi::Zero(nB);
 			}
 		}
 
 		if (lockW.size()!=nV) lockW=VectorX::Zero(nV);
-		if (lockM.size()!=nB) lockM=VectorXi::Zero(nB);
+		if (lockM.size()!=nB) lockM=Eigen::VectorXi::Zero(nB);
 	}
 
 	/** @brief Update bone transformations by running #nTransIters iterations with #transAffine and #transAffineNorm regularizers

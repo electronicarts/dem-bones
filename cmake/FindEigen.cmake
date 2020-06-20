@@ -9,5 +9,5 @@ find_path(EIGEN_INCLUDE_DIR
 include(FindPackageHandleStandardArgs)
 
 find_package_handle_standard_args(
-  EIGEN DEFAULT_MSG EIGEN_INCLUDE_DIR
+  Eigen DEFAULT_MSG EIGEN_INCLUDE_DIR
 )

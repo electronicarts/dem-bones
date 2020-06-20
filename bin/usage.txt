@@ -1,13 +1,13 @@
 
 USAGE: 
 
-   DemBones.exe  -a=<filename> ...  -i=<filename> ...  -o=<filename> ... 
-                 [-b=<int>] [--nInitIters=<int>] [-n=<int>]
-                 [--nTransIters=<int>] [--bindUpdate=<int>]
-                 [--transAffine=<double>] [--transAffineNorm=<double>]
-                 [--nWeightsIters=<int>] [-z=<int>]
-                 [--weightsSmooth=<double>] [--weightsSmoothStep=<double>]
-                 [--dbg=<int>] [--log=<filename>] [--] [--version] [-h]
+   DemBones  -a=<filename> ...  -i=<filename> ...  -o=<filename> ... 
+             [-b=<int>] [--nInitIters=<int>] [-n=<int>]
+             [--nTransIters=<int>] [--bindUpdate=<int>]
+             [--transAffine=<double>] [--transAffineNorm=<double>]
+             [--nWeightsIters=<int>] [-z=<int>] [--weightsSmooth=<double>]
+             [--weightsSmoothStep=<double>] [--dbg=<int>]
+             [--log=<filename>] [--] [--version] [-h]
 
 
 Where: 

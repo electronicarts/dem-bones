@@ -13,3 +13,9 @@
 
 # Optimize given bone transformations and skinning weights from input meshes sequence
 ../bin/DemBones -i="Bone_All.fbx" -a="Bone_Anim.abc" --bindUpdate=1 -o="Optimized.fbx"
+
+# Only solve helper bones using demLock attribute of the joints
+../bin/DemBones -i="Bone_Helpers.fbx" -a="Bone_Anim.abc" --bindUpdate=1 -o="SolvedHelpers.fbx"
+
+# Partially solve skinning weights using per-vertex color attribute of the mesh
+../bin/DemBones -i="Bone_PartiallySkinned.fbx" -a="Bone_Anim.abc" --nTransIters=0 -o="SolvedPartiallyWeights.fbx"

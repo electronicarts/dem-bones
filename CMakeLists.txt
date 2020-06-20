@@ -5,7 +5,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set(CMAKE_CONFIGURATION_TYPES "Release;" CACHE STRING "" FORCE)
 
 include_directories("${PROJECT_SOURCE_DIR}/include")
-find_package(EIGEN REQUIRED)
+find_package(Eigen REQUIRED)
 include_directories("${EIGEN_INCLUDE_DIR}")
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
@@ -27,7 +27,7 @@ add_executable(DemBonesCmd "${CMD_SOURCE}")
 set_target_properties(DemBonesCmd PROPERTIES OUTPUT_NAME "DemBones")
 
 find_package(TCLAP)
-find_package(ALEMBIC)
+find_package(Alembic)
 find_package(FBXSDK)
 
 target_include_directories(DemBonesCmd PUBLIC
@@ -48,9 +48,9 @@ endif()
 
 if(APPLE)
 	set_target_properties(DemBonesCmd PROPERTIES LINK_FLAGS "-Wl,-F/Library/Frameworks")
-	target_link_libraries(DemBonesCmd PUBLIC "-framework CoreFoundation")
-	set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3")
-	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
+	target_link_libraries(DemBonesCmd PUBLIC "-framework CoreFoundation -lxml2 -lz -liconv")
+	set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -Wno-switch -Wno-return-stack-address")
+	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wno-switch -Wno-return-stack-address")
 endif()
 
 install(TARGETS DemBonesCmd)

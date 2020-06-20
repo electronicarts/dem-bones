@@ -52,7 +52,6 @@ public:
 	using DemBones<_Scalar, _AniMeshScalar>::weightsSmoothStep;
 	using DemBones<_Scalar, _AniMeshScalar>::weightEps;
 
-
 	using DemBones<_Scalar, _AniMeshScalar>::nV;
 	using DemBones<_Scalar, _AniMeshScalar>::nB;
 	using DemBones<_Scalar, _AniMeshScalar>::nS;
@@ -61,7 +60,9 @@ public:
 	using DemBones<_Scalar, _AniMeshScalar>::subjectID;
 	using DemBones<_Scalar, _AniMeshScalar>::u;
 	using DemBones<_Scalar, _AniMeshScalar>::w;
+	using DemBones<_Scalar, _AniMeshScalar>::lockW;
 	using DemBones<_Scalar, _AniMeshScalar>::m;
+	using DemBones<_Scalar, _AniMeshScalar>::lockM;
 	using DemBones<_Scalar, _AniMeshScalar>::v;
 	using DemBones<_Scalar, _AniMeshScalar>::fv;
 
@@ -188,7 +189,7 @@ private:
 	*/
 	void computeBind(int s, MatrixX& b) {
 		if (bind.size()==0) {
-			lockM=VectorXi::Zero(nB);
+			lockM=Eigen::VectorXi::Zero(nB);
 			bind.resize(nS*4, nB*4);
 			for (int k=0; k<nS; k++) {
 				b=MatrixX::Identity(4, 4).replicate(1, nB);

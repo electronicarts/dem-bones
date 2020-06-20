@@ -1,13 +1,13 @@
 
 USAGE: 
 
-   DemBones  -a=<filename> ...  -i=<filename> ...  -o=<filename> ... 
-             [-b=<int>] [--nInitIters=<int>] [-n=<int>]
-             [--nTransIters=<int>] [--bindUpdate=<int>]
-             [--transAffine=<double>] [--transAffineNorm=<double>]
-             [--nWeightsIters=<int>] [-z=<int>] [--weightsSmooth=<double>]
-             [--weightsSmoothStep=<double>] [--dbg=<int>]
-             [--log=<filename>] [--] [--version] [-h]
+   DemBones.exe  -a=<filename> ...  -i=<filename> ...  -o=<filename> ... 
+                 [-b=<int>] [--nInitIters=<int>] [-n=<int>]
+                 [--nTransIters=<int>] [--bindUpdate=<int>]
+                 [--transAffine=<double>] [--transAffineNorm=<double>]
+                 [--nWeightsIters=<int>] [-z=<int>]
+                 [--weightsSmooth=<double>] [--weightsSmoothStep=<double>]
+                 [--dbg=<int>] [--log=<filename>] [--] [--version] [-h]
 
 
 Where: 
@@ -73,14 +73,14 @@ Where:
 
    Dem Bones - (c) Electronic Arts 2019
 
-   1. This tool only handles clean input data, i.e. only one piece of
+   - This tool only handles clean input data, i.e. only one piece of
    geometry with one skinCluster and no excessive joint.
 
-   2. To hard-lock the transformation of a bone: in the input fbx files,
-   create a bool attribute for the joint with name "demLock" and set its
-   value to "true".
+   - To hard-lock the transformations of bones: in the input fbx files,
+   create bool attributes for joint nodes (bones) with name "demLock" and
+   set the value to "true".
 
-   3. To soft-lock skinning weights of a vertex: in the input fbx files,
-   paint the vertex color in gray-scale.The closer the color to white, the
-   more skinning weights of the vertex are preserved.
+   - To soft-lock skinning weights of vertices: in the input fbx files,
+   paint per-vertex colors in gray-scale. The closer the color to white,
+   the more skinning weights of the vertex are preserved.
 

@@ -22,7 +22,7 @@ This project is named after "The Skeleton Dance" by Super Simple Songs.
 ## Compiling
 Tested platforms:
 - Visual Studio 2019 on Windows 10 x64,
-- LLVM 9.0.0 (Homebrew) on MacOS 10.13.6 x64 (experimental).
+- LLVM 10.0.0 (Homebrew) on MacOS 10.13.6 x64 (experimental).
 
 Compiling steps:
 1. Install [cmake](https://cmake.org/)

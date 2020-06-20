@@ -79,9 +79,9 @@ The skinning weights smoothing regularization was published in the paper:
 <p align="center"><a href="https://seed.ea.com"><img src="logo/SEED.jpg" width="150px"></a><br>
 <b>Search for Extraordinary Experiences Division (SEED) - Electronic Arts <br> http://seed.ea.com</b><br>
 We are a cross-disciplinary team within EA Worldwide Studios.<br>
-Our mission is to explore, build and help define the future of interactive entertainment. </p>
+Our mission is to explore, build and help define the future of interactive entertainment.</p>
 
-Dem Bones was created by Binh Le (ble@ea.com). The [logo](logo/DemBones.png) was designed by Phuong Le.
+<p align="center">Dem Bones was created by Binh Le (ble@ea.com). The [logo](logo/DemBones.png) was designed by Phuong Le.</p>
 
 ## Contributing
 

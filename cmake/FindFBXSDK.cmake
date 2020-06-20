@@ -11,12 +11,12 @@ if(WIN32)
 			"ExtLibs/FBXSDK/lib/vs2015/x64/release"
 	)
 	file(GLOB FBXSDK_LIBS "${FBXSDK_LIBS_DIR}/*-md.lib")
-endif()
-
-if(APPLE)
+elseif()
 	find_path(FBXSDK_LIBS_DIR
 		NAMES "libfbxsdk.a"
-		PATHS "ExtLibs/FBXSDK/lib/clang/release"
+		PATHS 
+			"ExtLibs/FBXSDK/lib/clang/release"
+			"ExtLibs/FBXSDK/lib/gcc4/x64/release"
 	)
 	file(GLOB FBXSDK_LIBS "${FBXSDK_LIBS_DIR}/*.a")
 endif()

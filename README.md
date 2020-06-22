@@ -40,7 +40,7 @@ cmake ..
 ```
 4. For Windows, launch and compile the solution `dem-bones.sln` with Visual Studio. For Linux or MacOS, run `$ make`
 
-> **Note** 
+> **Notes** 
 >- For Linux:
 >    - You may need to install some libriries: [libxml2-dev](http://xmlsoft.org/) (run `$ sudo apt-get install libxml2-dev`) and [zlib-dev](https://zlib.net/) (run `$ sudo apt-get install zlib1g-dev`).
 >

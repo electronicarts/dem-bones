@@ -307,7 +307,8 @@ public:
 				int nnzi=std::min(nnz, nB);
 				while (x(idx(nnzi-1))<weightEps) nnzi--;
 
-				x=indexing_vector(w.col(i).toDense().cwiseMax(0.0), idx.head(nnzi));
+				VectorX x0=w.col(i).toDense().cwiseMax(0.0);
+				x=indexing_vector(x0, idx.head(nnzi));
 				_Scalar s=x.sum();
 				if (s>_Scalar(0.1)) x/=s; else x=VectorX::Constant(nnzi, _Scalar(1)/nnzi);
 

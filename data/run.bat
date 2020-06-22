@@ -16,4 +16,4 @@ rem Only solve helper bones using demLock attribute of the joints
 call "../bin/Windows/DemBones.exe" -i="Bone_Helpers.fbx" -a="Bone_Anim.abc" --bindUpdate=1 -o="SolvedHelpers.fbx"
 
 rem Partially solve skinning weights using per-vertex color attribute of the mesh
-call "../bin/Windows/DemBones.exe" -i="Bone_PartiallySkinned.fbx" -a="Bone_Anim.abc" --nTransIters=0 -o="SolvedPartiallyWeights.fbx"
+call "../bin/Windows/DemBones.exe" -i="Bone_PartiallySkinned.fbx" -a="Bone_Anim.abc" --nTransIters=0 -o="SolvedPartialWeights.fbx"

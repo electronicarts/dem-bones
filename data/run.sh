@@ -24,4 +24,4 @@ $EXECUTION_FILE -i="Bone_All.fbx" -a="Bone_Anim.abc" --bindUpdate=1 -o="Optimize
 $EXECUTION_FILE -i="Bone_Helpers.fbx" -a="Bone_Anim.abc" --bindUpdate=1 -o="SolvedHelpers.fbx"
 
 # Partially solve skinning weights using per-vertex color attribute of the mesh
-$EXECUTION_FILE -i="Bone_PartiallySkinned.fbx" -a="Bone_Anim.abc" --nTransIters=0 -o="SolvedPartiallyWeights.fbx"
+$EXECUTION_FILE -i="Bone_PartiallySkinned.fbx" -a="Bone_Anim.abc" --nTransIters=0 -o="SolvedPartialWeights.fbx"

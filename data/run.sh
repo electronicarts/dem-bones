@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ "$OSTYPE" == "linux-gnu".* ]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     EXECUTION_FILE="../bin/Linux/DemBones"
-elif [ "$OSTYPE" == "darwin17" ]; then 
+elif [[ "$OSTYPE" == "darwin"* ]]; then 
     EXECUTION_FILE="../bin/MacOS/DemBones"
 fi
 

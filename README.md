@@ -15,7 +15,7 @@ This project is named after "The Skeleton Dance" by Super Simple Songs.
 
 ## Contents
 - `include/DemBones`: C++ header-only core library using [Eigen](http://eigen.tuxfamily.org) and [OpenMP](https://www.openmp.org/). Check out the documentations in [docs/index.html](docs/index.html).
-- `bin`: pre-compiled command line tools for Windows and MacOS that read and write [FBX](https://www.autodesk.com/products/fbx/overview) and [Alembic](https://www.alembic.io/) files. Check out the usage by running `DemBones --help`.
+- `bin`: pre-compiled command line tools for Windows, Linux, and MacOS that read and write [FBX](https://www.autodesk.com/products/fbx/overview) and [Alembic](https://www.alembic.io/) files. Check out the usage by running `DemBones --help`.
 - `src/command`: source code for the command line tool. Check out `AbcReader.cpp`, `FbxReader.cpp`, and `FbxWriter.cpp` for the usage of the core library.
 - `data`: input/output test data for the command line tool. Run and check out the scripts `run.bat` (Windows) or `./run.sh` (Linux/MacOS).
 

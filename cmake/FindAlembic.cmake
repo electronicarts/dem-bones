@@ -13,7 +13,7 @@ if(WIN32)
 		PATHS "ExtLibs/Alembic/lib"
 	)
 	file(GLOB ALEMBIC_LIBS "${ALEMBIC_LIB_DIR}/*.lib")
-elseif()
+else()
 	find_path(ALEMBIC_LIB_DIR
 		NAMES "libAlembic.a"
 		PATHS "ExtLibs/Alembic/lib"

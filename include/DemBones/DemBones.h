@@ -13,6 +13,7 @@
 #include <Eigen/StdVector>
 #include <algorithm>
 #include <queue>
+#include <set>
 #include "ConvexLS.h"
 
 #ifndef DEM_BONES_MAT_BLOCKS
@@ -786,6 +787,7 @@ private:
 
 		std::vector<Triplet, Eigen::aligned_allocator<Triplet>> triplet;
 		VectorX d=VectorX::Zero(nV);
+		std::vector<std::set<int>> isComputed(nV);
 
 		#pragma omp parallel for
 		for (int f=0; f<nFV; f++) {
@@ -794,7 +796,15 @@ private:
 				int i=fv[f][g];
 				int j=fv[f][(g+1)%nf];
 
-				if (i<j) {
+				bool needCompute=false;
+				#pragma omp critical 
+				if (isComputed[i].find(j)==isComputed[i].end()) {
+					needCompute=true;
+					isComputed[i].insert(j);
+					isComputed[j].insert(i);
+				}
+
+				if (needCompute) {
 					double val=0;
 					for (int s=0; s<nS; s++) {
 						double du=(u.vec3(s, i)-u.vec3(s, j)).norm();

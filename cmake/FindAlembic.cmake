@@ -13,9 +13,7 @@ if(WIN32)
 		PATHS "ExtLibs/Alembic/lib"
 	)
 	file(GLOB ALEMBIC_LIBS "${ALEMBIC_LIB_DIR}/*.lib")
-endif()
-
-if(APPLE)
+else()
 	find_path(ALEMBIC_LIB_DIR
 		NAMES "libAlembic.a"
 		PATHS "ExtLibs/Alembic/lib"
@@ -26,5 +24,5 @@ endif()
 include(FindPackageHandleStandardArgs)
 
 find_package_handle_standard_args(
-  ALEMBIC DEFAULT_MSG ALEMBIC_INCLUDE_DIR ALEMBIC_LIBS
+  Alembic DEFAULT_MSG ALEMBIC_INCLUDE_DIR ALEMBIC_LIBS
 )

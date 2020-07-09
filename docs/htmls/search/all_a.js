@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['subjectid_47',['subjectID',['../class_dem_1_1_dem_bones.html#ac99a3d810ab4fc1286e9677ce5c322b0',1,'Dem::DemBones']]]
+  ['rmse_65',['rmse',['../class_dem_1_1_dem_bones.html#a050b398499f5daa9e42119b0774f25d0',1,'Dem::DemBones']]],
+  ['rotmat_66',['rotMat',['../_mat_blocks_8h.html#af8911e62d9ea5214390af1c948c7fd4d',1,'MatBlocks.h']]],
+  ['rotorder_67',['rotOrder',['../class_dem_1_1_dem_bones_ext.html#a30f4bfbe88493adecae038035e0b33be',1,'Dem::DemBonesExt']]]
 ];

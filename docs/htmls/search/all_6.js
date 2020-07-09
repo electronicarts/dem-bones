@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['nb_32',['nB',['../class_dem_1_1_dem_bones.html#aa0b51ddfe06be09fdf3c74a00f5dd867',1,'Dem::DemBones']]],
-  ['nf_33',['nF',['../class_dem_1_1_dem_bones.html#aa9cf74a32230ec9c61096a58cdc555bf',1,'Dem::DemBones']]],
-  ['ninititers_34',['nInitIters',['../class_dem_1_1_dem_bones.html#a9079e21634edb0dd2502bfc3a1eedbd0',1,'Dem::DemBones']]],
-  ['niters_35',['nIters',['../class_dem_1_1_dem_bones.html#aa7f14b41174dc22e81b089d0c5a56950',1,'Dem::DemBones']]],
-  ['nnz_36',['nnz',['../class_dem_1_1_dem_bones.html#ad6ded1630b2bac8d192e6134823a37f8',1,'Dem::DemBones']]],
-  ['ns_37',['nS',['../class_dem_1_1_dem_bones.html#a913edb0e3273c6b18012c000a0764915',1,'Dem::DemBones']]],
-  ['ntransiters_38',['nTransIters',['../class_dem_1_1_dem_bones.html#a9afbf2acccc4126e1e76c2a41f3ac649',1,'Dem::DemBones']]],
-  ['nv_39',['nV',['../class_dem_1_1_dem_bones.html#a277dac86c8474a12eb489bedf98ddee2',1,'Dem::DemBones']]],
-  ['nweightsiters_40',['nWeightsIters',['../class_dem_1_1_dem_bones.html#ae381fbe6610c9f4b169b16106dfbae94',1,'Dem::DemBones']]]
+  ['m_46',['m',['../class_dem_1_1_dem_bones.html#a3462ee570b8b809ecff8739000783813',1,'Dem::DemBones']]],
+  ['matblocks_2eh_47',['MatBlocks.h',['../_mat_blocks_8h.html',1,'']]],
+  ['matrix3_48',['Matrix3',['../class_dem_1_1_dem_bones.html#aed480cb1bda1b33f20171f7f847c1b06',1,'Dem::DemBones::Matrix3()'],['../class_dem_1_1_dem_bones_ext.html#af372c94208c01a28f9a57b6377223470',1,'Dem::DemBonesExt::Matrix3()']]],
+  ['matrix4_49',['Matrix4',['../class_dem_1_1_dem_bones.html#ad2a018d01cdb2a44f8ee964ddb4e8278',1,'Dem::DemBones::Matrix4()'],['../class_dem_1_1_dem_bones_ext.html#a7da7e93c85500a1a23855d85c5db08c6',1,'Dem::DemBonesExt::Matrix4()']]],
+  ['matrixtype_50',['MatrixType',['../class_dem_1_1indexing__functor__row__col.html#a3b60c9d162a386342f729652fad60710',1,'Dem::indexing_functor_row_col::MatrixType()'],['../class_dem_1_1indexing__functor__row.html#a51654362946e68e4ffc8728d0e49dda0',1,'Dem::indexing_functor_row::MatrixType()']]],
+  ['matrixx_51',['MatrixX',['../class_dem_1_1_convex_l_s.html#ae6da3230d1826b15b369e6879cbb7191',1,'Dem::ConvexLS::MatrixX()'],['../class_dem_1_1_dem_bones.html#a5e4b99c4a233b477116204f9f1fae9cd',1,'Dem::DemBones::MatrixX()'],['../class_dem_1_1_dem_bones_ext.html#a7bc7c59a436c5a0d217adef008bb0eb3',1,'Dem::DemBonesExt::MatrixX()']]]
 ];

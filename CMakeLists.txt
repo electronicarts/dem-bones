@@ -40,19 +40,21 @@ target_include_directories(DemBonesCmd PUBLIC
 target_link_libraries(DemBonesCmd PUBLIC 
 	"${FBXSDK_LIBS}"
 	"${ALEMBIC_LIBS}"
-	"${ZLIB_LIBS}"
 )
 
 if(WIN32)
-	find_package(Zlib)
-	target_link_libraries(DemBonesCmd PUBLIC "${ZLIB_LIBS}")
-endif()
-
-if(APPLE)
+	set_target_properties(DemBonesCmd PROPERTIES LINK_FLAGS "/force:multiple")
+	install(TARGETS DemBonesCmd DESTINATION "bin/Windows")
+elseif(APPLE)
 	set_target_properties(DemBonesCmd PROPERTIES LINK_FLAGS "-Wl,-F/Library/Frameworks")
-	target_link_libraries(DemBonesCmd PUBLIC "-framework CoreFoundation")
-	set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3")
-	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
+	target_link_libraries(DemBonesCmd PUBLIC "-framework CoreFoundation -lxml2 -lz -liconv")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -Wno-switch -Wno-return-stack-address")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wno-switch -Wno-return-stack-address")
+	install(TARGETS DemBonesCmd DESTINATION "bin/MacOS")
+else()
+	target_link_libraries(DemBonesCmd PUBLIC "-lxml2 -lz -ldl")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -D_GLIBCXX_USE_CXX11_ABI=0")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -D_GLIBCXX_USE_CXX11_ABI=0")
+	install(TARGETS DemBonesCmd DESTINATION "bin/Linux")
 endif()
 
-install(TARGETS DemBonesCmd)

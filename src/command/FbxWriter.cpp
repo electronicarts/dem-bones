@@ -48,12 +48,20 @@ public:
 		for (int j=0; j!=name.size(); j++) {
 			FbxSkeleton* lSkeletonAttribute=FbxSkeleton::Create(lScene, name[j].c_str());
 			lSkeletonAttribute->SetSkeletonType(FbxSkeleton::eLimb);
-			lSkeletonAttribute->
-			Size.Set(radius);
+			lSkeletonAttribute->Size.Set(radius);
 			FbxNode* lSkeleton=FbxNode::Create(lScene, name[j].c_str());
 			lSkeleton->SetNodeAttribute(lSkeletonAttribute);
 			lSkeleton->SetRotationOrder(FbxNode::eSourcePivot, eEulerXYZ);
 			lScene->GetRootNode()->AddChild(lSkeleton);
+		}
+	}
+
+	void getOrientations(const vector<string>& name, MatrixXd& o) {
+		o.resize(3, name.size());
+		for (int j=0; j!=name.size(); j++) {
+			FbxNode* lSkeleton=lScene->FindNodeByName(FbxString(name[j].c_str()));
+			FbxDouble3 oj=lSkeleton->PreRotation.Get();
+			o.col(j)<<oj[0], oj[1], oj[2];
 		}
 	}
 
@@ -67,6 +75,7 @@ public:
 			idx=lCurve->KeyAdd(lTime);
 			lCurve->KeySetValue(idx, (float)val(k));
 			lCurve->KeySetInterpolation(idx, FbxAnimCurveDef::eInterpolationCubic);
+			lCurve->KeySetTangentMode(idx, FbxAnimCurveDef::eTangentAuto);
 		}
 		lCurve->KeyModifyEnd();
 	}
@@ -175,14 +184,17 @@ bool writeFBXs(const vector<string>& fileNames, const vector<string>& inputFileN
 	}
 
 	for (int s=0; s<model.nS; s++) {
-		MatrixXd lr, lt, gb, lbr, lbt;
-		model.computeRTB(s, lr, lt, gb, lbr, lbt);
-
 		msg(1, "    \""<<inputFileNames[s]<<"\" ");
 		if (!exporter.open(inputFileNames[s])) err("Error on opening file.\n");
 		msg(1, "--> \""<<fileNames[s]<<"\" ");
 
 		if (needCreateJoints) exporter.createJoints(model.boneName, radius);
+
+		MatrixXd o, lr, lt, gb, lbr, lbt;
+		exporter.getOrientations(model.boneName, o);
+
+		model.computeRTB(s, o, lr, lt, gb, lbr, lbt);
+
 		exporter.setJoints(model.boneName, model.fTime.segment(model.fStart(s), model.fStart(s+1)-model.fStart(s)), lr, lt, lbr, lbt);
 		exporter.setSkinCluster(model.boneName, model.w, gb);
 

@@ -409,7 +409,7 @@ THE SOFTWARE.
 ## FBXSDK
 
 This software contains Autodesk(R) FBX(R) code developed by Autodesk, Inc. 
-Copyright 2018 Autodesk, Inc. All rights, reserved. Such code is provided 
+Copyright 2019 Autodesk, Inc. All rights, reserved. Such code is provided 
 “as is” and Autodesk, Inc. disclaims any and all warranties, whether express 
 or implied, including without limitation the implied warranties of 
 merchantability, fitness for a particular purpose or non-infringement of 

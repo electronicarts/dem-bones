@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['transaffine_48',['transAffine',['../class_dem_1_1_dem_bones.html#a53f9859cd63a8c51f6f50fdfa7251681',1,'Dem::DemBones']]],
-  ['transaffinenorm_49',['transAffineNorm',['../class_dem_1_1_dem_bones.html#a3b125934b440ebcebb3ba44acda41366',1,'Dem::DemBones']]],
-  ['transvec_50',['transVec',['../_mat_blocks_8h.html#a59df0c210b2ea616135f313a28a5333d',1,'MatBlocks.h']]]
+  ['solve_68',['solve',['../class_dem_1_1_convex_l_s.html#a68f946876bc5259e699f0c311d18e266',1,'Dem::ConvexLS']]],
+  ['sparsematrix_69',['SparseMatrix',['../class_dem_1_1_dem_bones.html#aa8ea3a6b166652e954decbf135b3255b',1,'Dem::DemBones::SparseMatrix()'],['../class_dem_1_1_dem_bones_ext.html#a039349271cd9bd256ba359f0eab2ac7c',1,'Dem::DemBonesExt::SparseMatrix()']]],
+  ['subjectid_70',['subjectID',['../class_dem_1_1_dem_bones.html#ac99a3d810ab4fc1286e9677ce5c322b0',1,'Dem::DemBones']]]
 ];

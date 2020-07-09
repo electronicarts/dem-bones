@@ -38,7 +38,7 @@ mkdir build
 cd build
 cmake ..
 ```
-4. Run `$ cmake --build . --config Release --target install`
+4. Build: `$ cmake --build . --config Release --target install`
 
 > **Notes for Linux** 
 >   - You may need to install some libriries: [libxml2-dev](http://xmlsoft.org/) (run `$ sudo apt-get install libxml2-dev`) and [zlib-dev](https://zlib.net/) (run `$ sudo apt-get install zlib1g-dev`).

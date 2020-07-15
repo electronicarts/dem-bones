@@ -1,7 +1,7 @@
 # Version History
 
 ## Version 1.2.0 (July 2020)
-- Add early stop to cbIterEnd()
+- Add stop on convergence to cbIterEnd()
 - Add --bindUpdate=2 flag to group joints
 - Add --tolerance and --patience flags in the command line tool using cbIterEnd()
 

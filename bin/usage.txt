@@ -1,13 +1,14 @@
 
 USAGE: 
 
-   DemBones  -a=<filename> ...  -i=<filename> ...  -o=<filename> ... 
-             [-b=<int>] [--nInitIters=<int>] [-n=<int>]
-             [--nTransIters=<int>] [--bindUpdate=<int>]
-             [--transAffine=<double>] [--transAffineNorm=<double>]
-             [--nWeightsIters=<int>] [-z=<int>] [--weightsSmooth=<double>]
-             [--weightsSmoothStep=<double>] [--dbg=<int>]
-             [--log=<filename>] [--] [--version] [-h]
+   DemBones.exe  -a=<filename> ...  -i=<filename> ...  -o=<filename> ... 
+                 [-b=<int>] [--nInitIters=<int>] [-n=<int>]
+                 [--tolerance=<double>] [--patience=<int>]
+                 [--nTransIters=<int>] [--bindUpdate=<int>]
+                 [--transAffine=<double>] [--transAffineNorm=<double>]
+                 [--nWeightsIters=<int>] [-z=<int>]
+                 [--weightsSmooth=<double>] [--weightsSmoothStep=<double>]
+                 [--dbg=<int>] [--log=<filename>] [--] [--version] [-h]
 
 
 Where: 
@@ -31,11 +32,20 @@ Where:
    -n=<int>,  --nIters=<int>
      number of global iterations
 
+   --tolerance=<double>
+     convergence tolerance, stop if error relatively reduces less than
+     [--tolerance] in [--patience] consecutive iterations
+
+   --patience=<int>
+     convergence patience, stop if error relatively reduces less than
+     [--tolerance] in [--patience] consecutive iterations
+
    --nTransIters=<int>
      number of transformation update iterations per global iteration
 
    --bindUpdate=<int>
-     update bind pose (0=no update, 1=update joint positions)
+     update bind pose (0=no update, 1=update joint positions, 2=regroup
+     joints under one root)
 
    --transAffine=<double>
      bone translations affinity soft constraint

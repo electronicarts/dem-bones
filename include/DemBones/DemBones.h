@@ -348,7 +348,7 @@ public:
 			cbIterBegin();
 			computeTranformations();
 			computeWeights();
-			cbIterEnd();
+			if (cbIterEnd()) break;
 		}
 	}
 	
@@ -377,8 +377,8 @@ public:
 
 	//! Callback function invoked before each global iteration update
 	virtual void cbIterBegin() {}
-	//! Callback function invoked after each global iteration update
-	virtual void cbIterEnd() {}
+	//! Callback function invoked after each global iteration update, stop the global iteration if return true
+	virtual bool cbIterEnd() { return false; }
 
 	//! Callback function invoked before each skinning weights update
 	virtual void cbWeightsBegin() {}

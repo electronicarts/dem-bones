@@ -73,12 +73,14 @@ public:
 		msg(1, " Done! ");
 	}
 
-	void cbTransformationsIterEnd() {
+	bool cbTransformationsIterEnd() {
 		msg(1, ".");
+		return false;
 	}
 
-	void cbWeightsIterEnd() {
+	bool cbWeightsIterEnd() {
 		msg(1, ".");
+		return false;
 	}
 
 private:

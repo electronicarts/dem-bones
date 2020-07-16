@@ -44,7 +44,7 @@ namespace Dem
 		- DemBones::nTransIters, DemBones::transAffine, DemBones::transAffineNorm
 		- DemBones::nWeightsIters, DemBones::nnz, DemBones::weightsSmooth, DemBones::weightsSmoothStep, DemBones::weightEps
 	-# [@c optional] Setup extended class:
-		- Load data: DemBonesExt::parent, DemBonesExt::preMulInv, DemBonesExt::rotOrder, DemBonesExt::bind
+		- Load data: DemBonesExt::parent, DemBonesExt::preMulInv, DemBonesExt::rotOrder, DemBonesExt::orient, DemBonesExt::bind
 		- Set parameter DemBonesExt::bindUpdate
 	-# [@c optional] Override callback functions (cb...) in the base class @ref DemBones
 	-# Call decomposition function DemBones::compute(), DemBones::computeWeights(), DemBones::computeTranformations(), or DemBones::init()
@@ -56,7 +56,7 @@ namespace Dem
 	
 	@details Setup the required data, parameters, and call either compute(), computeWeights(), computeTranformations(), or init().
 	
-	Callback functions and read-only values can be used to report progress: cbInitSplitBegin(), cbInitSplitEnd(), 
+	Callback functions and read-only values can be used to report progress and stop on convergence: cbInitSplitBegin(), cbInitSplitEnd(), 
 	cbIterBegin(), cbIterEnd(), cbWeightsBegin(), cbWeightsEnd(), cbTranformationsBegin(), cbTransformationsEnd(), cbTransformationsIterBegin(),
 	cbTransformationsIterEnd(), cbWeightsIterBegin(), cbWeightsIterEnd(), rmse(), #iter, #iterTransformations, #iterWeights.
 
@@ -254,7 +254,7 @@ public:
 							if (uuT.innerIdx(it)!=j) qpT-=m.blk4(k, uuT.innerIdx(it))*uuT.val.blk4(subjectID(k), it);
 						qpT2m(qpT, k, j);
 					}
-			cbTransformationsIterEnd();
+			if (cbTransformationsIterEnd()) return;
 		}
 		
 		cbTransformationsEnd();
@@ -323,7 +323,7 @@ public:
 			w.resize(nB, nV);
 			w.setFromTriplets(trip.begin(), trip.end());
 			
-			cbWeightsIterEnd();
+			if (cbWeightsIterEnd()) return;
 		}
 		
 		cbWeightsEnd();
@@ -351,13 +351,13 @@ public:
 			if (cbIterEnd()) break;
 		}
 	}
-	
+
 	//! @return Root mean squared reconstruction error
 	_Scalar rmse() {
 		_Scalar e=0;
 		#pragma omp parallel for
 		for (int i=0; i<nV; i++) {
-			_Scalar ei = 0;
+			_Scalar ei=0;
 			Matrix4 mki;
 			for (int k=0; k<nF; k++) {
 				mki.setZero();
@@ -377,7 +377,7 @@ public:
 
 	//! Callback function invoked before each global iteration update
 	virtual void cbIterBegin() {}
-	//! Callback function invoked after each global iteration update, stop the global iteration if return true
+	//! Callback function invoked after each global iteration update, stop iteration if return true
 	virtual bool cbIterEnd() { return false; }
 
 	//! Callback function invoked before each skinning weights update
@@ -392,13 +392,13 @@ public:
 
 	//! Callback function invoked before each local bone transformations update iteration
 	virtual void cbTransformationsIterBegin() {}
-	//! Callback function invoked after each local bone transformations update iteration
-	virtual void cbTransformationsIterEnd() {}
+	//! Callback function invoked after each local bone transformations update iteration, stop iteration if return true
+	virtual bool cbTransformationsIterEnd() { return false; }
 
 	//! Callback function invoked before each local weights update iteration
 	virtual void cbWeightsIterBegin() {}
-	//! Callback function invoked after each local weights update iteration
-	virtual void cbWeightsIterEnd() {}
+	//! Callback function invoked after each local weights update iteration, stop iteration if return true
+	virtual bool cbWeightsIterEnd() { return false; }
 
 private:
 	int _iter, _iterTransformations, _iterWeights;

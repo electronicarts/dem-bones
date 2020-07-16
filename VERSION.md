@@ -2,7 +2,7 @@
 
 ## Version 1.2.0 (July 2020)
 - Add stop on convergence to cbIterEnd(), cbWeightsIterEnd(), cbTransformationsIterEnd()
-- Add --bindUpdate=2 flag to group joints
+- Add --bindUpdate=2 flag in the command line tool to group joints
 - Add --tolerance and --patience flags in the command line tool using cbIterEnd()
 
 ## Version 1.1.0 (June 2020)

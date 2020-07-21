@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['parent_149',['parent',['../class_dem_1_1_dem_bones_ext.html#ad740868b3bc6cdf34e6e2ec5f35e24d7',1,'Dem::DemBonesExt']]],
-  ['premulinv_150',['preMulInv',['../class_dem_1_1_dem_bones_ext.html#a3785152d056860bc55febcad64837ef3',1,'Dem::DemBonesExt']]]
+  ['orient_150',['orient',['../class_dem_1_1_dem_bones_ext.html#a9a6a2004f16832cd3f97c22789147a8a',1,'Dem::DemBonesExt']]]
 ];

@@ -1,5 +1,10 @@
 # Version History
 
+## Version 1.2.0 (July 2020)
+- Add stop on convergence to cbIterEnd(), cbWeightsIterEnd(), cbTransformationsIterEnd()
+- Add --bindUpdate=2 flag in the command line tool to group joints
+- Add --tolerance and --patience flags in the command line tool using cbIterEnd()
+
 ## Version 1.1.0 (June 2020)
 - Add per-bone transformation hard-lock and per-vertex weights soft-lock
 - Fix initialization issue on cluster splitting 

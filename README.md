@@ -2,7 +2,7 @@
 
 # Dem Bones
 [![BSD3 Clause](https://img.shields.io/badge/license-BSD3_Clause-blue.svg)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-1.1.0-green.svg)](VERSION.md)
+[![Version](https://img.shields.io/badge/version-1.2.0-green.svg)](VERSION.md)
 
 This repository contains an implementation of [Smooth Skinning Decomposition with Rigid Bones](http://binh.graphics/papers/2012sa-ssdr/), 
 an automated algorithm to extract the *Linear Blend Skinning* (LBS) with bone transformations from a set of example meshes. 

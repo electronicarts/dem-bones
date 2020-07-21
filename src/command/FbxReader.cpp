@@ -27,6 +27,7 @@ public:
 	map<string, VectorXd, less<string>, aligned_allocator<pair<const string, VectorXd>>> wT;
 	map<string, Matrix4d, less<string>, aligned_allocator<pair<const string, Matrix4d>>> bind, preMulInv;
 	map<string, Vector3i, less<string>, aligned_allocator<pair<const string, Vector3i>>> rotOrder;
+	map<string, Vector3d, less<string>, aligned_allocator<pair<const string, Vector3d>>> orient;
 	map<string, MatrixXd, less<string>, aligned_allocator<pair<const string, MatrixXd>>> m;
 	map<string, int> lockM;
 	VectorXd lockW;
@@ -170,6 +171,9 @@ public:
 				case eEulerZYX: rotOrder[name]=Vector3i(2, 1, 0); break;
 			}
 
+			FbxDouble3 oj=jn[j].pNode->PreRotation.Get();
+			orient[name]<<oj[0], oj[1], oj[2];
+
 			if (jn[j].pNode->GetParent()!=jn[j].pParentJoint) {
 				Matrix4d gp=Map<Matrix4d>((double*)(jn[j].pNode->GetParent()->EvaluateGlobalTransform()));
 				if (jn[j].pParentJoint==NULL) preMulInv[name]=gp.inverse(); else {
@@ -251,6 +255,7 @@ bool readFBXs(const vector<string>& fileNames, DemBonesExt<double, float>& model
 			model.bind.resize(model.nS*4, model.nB*4);
 			model.preMulInv.resize(model.nS*4, model.nB*4);
 			model.rotOrder.resize(model.nS*3, model.nB);
+			model.orient.resize(model.nS*3, model.nB);
 			model.lockM.resize(model.nB);
 
 			for (int j=0; j<model.nB; j++) {
@@ -263,6 +268,7 @@ bool readFBXs(const vector<string>& fileNames, DemBonesExt<double, float>& model
 				model.bind.blk4(s, j)=importer.bind[nj];
 				model.preMulInv.blk4(s, j)=importer.preMulInv[nj];
 				model.rotOrder.vec3(s, j)=importer.rotOrder[nj];
+				model.orient.vec3(s, j)=importer.orient[nj];
 				model.lockM(j)=importer.lockM[nj];
 			}
 
@@ -282,11 +288,6 @@ bool readFBXs(const vector<string>& fileNames, DemBonesExt<double, float>& model
 
 			if (model.nB!=importer.jointName.size()) err("Inconsistent joints set.\n");
 
-			model.parent.resize(model.nB);
-			model.bind.resize(model.nS*4, model.nB*4);
-			model.preMulInv.resize(model.nS*4, model.nB*4);
-			model.rotOrder.resize(model.nS*3, model.nB);
-
 			for (int j=0; j<model.nB; j++) {
 				string nj=model.boneName[j];
 
@@ -300,6 +301,8 @@ bool readFBXs(const vector<string>& fileNames, DemBonesExt<double, float>& model
 				model.preMulInv.blk4(s, j)=importer.preMulInv[nj];
 				if (importer.rotOrder.find(nj)==importer.rotOrder.end()) err("Inconsistent joints set.\n");
 				model.rotOrder.vec3(s, j)=importer.rotOrder[nj];
+				if (importer.orient.find(nj)==importer.orient.end()) err("Inconsistent joints set.\n");
+				model.orient.vec3(s, j)=importer.orient[nj];
 				if (model.lockM(j)!=importer.lockM[nj]) err("Inconsistent joint lock set.\n");
 			}
 

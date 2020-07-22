@@ -1,7 +1,7 @@
 
 USAGE: 
 
-   DemBones.exe  -a=<filename> ...  -i=<filename> ...  -o=<filename> ... 
+   DemBones      -a=<filename> ...  -i=<filename> ...  -o=<filename> ... 
                  [-b=<int>] [--nInitIters=<int>] [-n=<int>]
                  [--tolerance=<double>] [--patience=<int>]
                  [--nTransIters=<int>] [--bindUpdate=<int>]

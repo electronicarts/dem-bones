@@ -9,6 +9,9 @@ call "../bin/Windows/DemBones.exe" -i="Bone_Geom.fbx" -a="Bone_Anim.abc" -b=20 -
 rem Solve skinning weights from input meshes sequence and input bone transformations
 call "../bin/Windows/DemBones.exe" -i="Bone_Trans.fbx" -a="Bone_Anim.abc" --nTransIters=0 -o="SolvedWeights.fbx"
 
+rem Solve skinning weights with soft sparseness constraint
+call "../bin/Windows/DemBones.exe" -i="Bone_Trans.fbx" -a="Bone_Anim.abc" --nTransIters=0 -o="SolvedWeights.fbx"
+
 rem Solve bone transformations from input meshes sequence and input skinning weights
 call "../bin/Windows/DemBones.exe" -i="Bone_Skin.fbx" -a="Bone_Anim.abc" --nWeightsIters=0 -o="SolvedTransformations.fbx"
 

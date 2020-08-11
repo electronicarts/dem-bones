@@ -93,6 +93,8 @@ public:
 	int nWeightsIters;
 	//! [@c parameter] Number of non-zero weights per vertex, @c default = 8
 	int nnz;
+	//! [@c parameter] Weights sparseness soft constraint, @c default = 1e-5
+	_Scalar weightsSparseness;
 	//! [@c parameter] Weights smoothness soft constraint, @c default = 1e-4
 	_Scalar weightsSmooth;	
 	//! [@c parameter] Step size for the weights smoothness soft constraint, @c default = 1.0
@@ -104,7 +106,7 @@ public:
 	*/
 	DemBones():	nIters(30), nInitIters(10),
 			nTransIters(5),	transAffine(_Scalar(10)), transAffineNorm(_Scalar(4)),
-			nWeightsIters(3), nnz(8), weightsSmooth(_Scalar(1e-4)), weightsSmoothStep(_Scalar(1)),
+			nWeightsIters(3), nnz(8), weightsSparseness(_Scalar(1e-5)), weightsSmooth(_Scalar(1e-4)), weightsSmoothStep(_Scalar(1)),
 			weightEps(_Scalar(1e-15)),
 			iter(_iter), iterTransformations(_iterTransformations), iterWeights(_iterWeights) {
 		clear();
@@ -299,7 +301,7 @@ public:
 			for (int i=0; i<nV; i++) {
 				MatrixX aTai;
 				compute_aTa(i, aTai);
-				aTai=(1-lockW(i))*(aTai/reg_scale+weightsSmooth*MatrixX::Identity(nB, nB))+lockW(i)*MatrixX::Identity(nB, nB);
+				aTai=(1-lockW(i))*(aTai/reg_scale+(weightsSmooth-weightsSparseness)*MatrixX::Identity(nB, nB))+lockW(i)*MatrixX::Identity(nB, nB);
 				VectorX aTbi=(1-lockW(i))*(aTb.col(i)/reg_scale+weightsSmooth*ws.col(i))+lockW(i)*w.col(i);
 
 				VectorX x=(1-lockW(i))*ws.col(i)+lockW(i)*w.col(i);

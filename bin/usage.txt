@@ -1,14 +1,15 @@
 
 USAGE: 
 
-   DemBones      -a=<filename> ...  -i=<filename> ...  -o=<filename> ... 
-                 [-b=<int>] [--nInitIters=<int>] [-n=<int>]
-                 [--tolerance=<double>] [--patience=<int>]
-                 [--nTransIters=<int>] [--bindUpdate=<int>]
-                 [--transAffine=<double>] [--transAffineNorm=<double>]
-                 [--nWeightsIters=<int>] [-z=<int>]
-                 [--weightsSmooth=<double>] [--weightsSmoothStep=<double>]
-                 [--dbg=<int>] [--log=<filename>] [--] [--version] [-h]
+   DemBones  -a=<filename> ...  -i=<filename> ...  -o=<filename> ... 
+             [-b=<int>] [--nInitIters=<int>] [-n=<int>]
+             [--tolerance=<double>] [--patience=<int>]
+             [--nTransIters=<int>] [--bindUpdate=<int>]
+             [--transAffine=<double>] [--transAffineNorm=<double>]
+             [--nWeightsIters=<int>] [-z=<int>]
+             [--weightsSparseness=<double>] [--weightsSmooth=<double>]
+             [--weightsSmoothStep=<double>] [--dbg=<int>]
+             [--log=<filename>] [--] [--version] [-h]
 
 
 Where: 
@@ -58,6 +59,9 @@ Where:
 
    -z=<int>,  --nnz=<int>
      number of non-zero weights per vertex
+
+   --weightsSparseness=<double>
+     weights sparseness soft constraint
 
    --weightsSmooth=<double>
      weights smoothness soft constraint

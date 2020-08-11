@@ -94,13 +94,14 @@ int main(int argc, char** argv) {
 	CmdLine cmd("Dem Bones - (c) Electronic Arts 2019\n"
 "    - This tool only handles clean input data, i.e. only one piece of geometry with one skinCluster and no excessive joint.\n\
      - To hard-lock the transformations of bones: in the input fbx files, create bool attributes for joint nodes (bones) with name \"demLock\" and set the value to \"true\".\n\
-     - To soft-lock skinning weights of vertices: in the input fbx files, paint per-vertex colors in gray-scale. The closer the color to white, the more skinning weights of the vertex are preserved.", '=', "1.2.0");
+     - To soft-lock skinning weights of vertices: in the input fbx files, paint per-vertex colors in gray-scale. The closer the color to white, the more skinning weights of the vertex are preserved.", '=', "1.3.0");
 
 	ValueArg<string> logFile("", "log", "log file name", false, "", "filename", cmd);
 	ValueArg<int> dbg("", "dbg", "debug level", false, 1, "int", cmd);
 
 	ValueArg<double> weightsSmoothStep("", "weightsSmoothStep", "step size for the weights smoothness", false, model.weightsSmoothStep, "double", cmd);
 	ValueArg<double> weightsSmooth("", "weightsSmooth", "weights smoothness soft constraint", false, model.weightsSmooth, "double", cmd);
+	ValueArg<double> weightsSparseness("", "weightsSparseness", "weights sparseness soft constraint", false, model.weightsSparseness, "double", cmd);
 	ValueArg<int> nnz("z", "nnz", "number of non-zero weights per vertex", false, model.nnz, "int", cmd);
 	ValueArg<int> nWeightsIters("", "nWeightsIters", "number of weights update iterations per global iteration", false, model.nWeightsIters, "int", cmd);
 
@@ -172,6 +173,7 @@ int main(int argc, char** argv) {
 		msg(1, "    transAffine        = "<<transAffine.getValue()<<(transAffine.isSet()?"\n":" (default)\n"));
 		msg(1, "    transAffineNorm    = "<<transAffineNorm.getValue()<<(transAffineNorm.isSet()?"\n":" (default)\n"));
 		msg(1, "    nnz                = "<<nnz.getValue()<<(nnz.isSet()?"\n":" (default)\n"));
+		msg(1, "    weightsSparseness  = "<<weightsSparseness.getValue()<<(weightsSparseness.isSet()?"\n":" (default)\n"));
 		msg(1, "    weightsSmooth      = "<<weightsSmooth.getValue()<<(weightsSmooth.isSet()?"\n":" (default)\n"));
 		msg(1, "    weightsSmoothStep  = "<<weightsSmoothStep.getValue()<<(weightsSmoothStep.isSet()?"\n":" (default)\n"));
 	} catch (ArgException &e) {
@@ -189,6 +191,7 @@ int main(int argc, char** argv) {
 	model.transAffineNorm=transAffineNorm.getValue();
 
 	model.nnz=nnz.getValue();
+	model.weightsSparseness=weightsSparseness.getValue();
 	model.weightsSmooth=weightsSmooth.getValue();
 	model.weightsSmoothStep=weightsSmoothStep.getValue();
 

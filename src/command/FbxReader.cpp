@@ -307,7 +307,7 @@ bool readFBXs(const vector<string>& fileNames, DemBonesExt<double, float>& model
 			}
 
 			if (wd.rows()!=importer.wT.size()) err("Inconsistent skinningWeights.\n");
-			if (wd.rows()!=0) for (int j=0; j<model.nB; j++) wd.col(j)+=importer.wT[model.boneName[j]];
+			if (wd.rows()!=0) for (int j=0; j<model.nB; j++) wd.row(j)+=importer.wT[model.boneName[j]].transpose();
 			model.lockW+=importer.lockW;
 		}
 

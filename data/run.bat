@@ -23,3 +23,4 @@ call "../bin/Windows/DemBones.exe" -i="Bone_Helpers.fbx" -a="Bone_Anim.abc" --bi
 
 rem Partially solve skinning weights using per-vertex color attribute of the mesh
 call "../bin/Windows/DemBones.exe" -i="Bone_PartiallySkinned.fbx" -a="Bone_Anim.abc" --nTransIters=0 -o="SolvedPartialWeights.fbx"
+

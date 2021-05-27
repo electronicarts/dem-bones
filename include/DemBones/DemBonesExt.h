@@ -212,7 +212,7 @@ private:
 			for (int k=0; k<nS; k++) {
 				b=MatrixX::Identity(4, 4).replicate(1, nB);
 				computeCentroids(k, b);
-				bind.block(4*s, 0, 4, 4*nB)=b;
+				bind.block(4*k, 0, 4, 4*nB)=b;
 			}
 		}
 		

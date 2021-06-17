@@ -1,5 +1,8 @@
 # Version History
 
+## Version 1.2.1 (June 2021)
+- Fix processing multiple input files
+
 ## Version 1.2.0 (July 2020)
 - Add stop on convergence to cbIterEnd(), cbWeightsIterEnd(), cbTransformationsIterEnd()
 - Add --bindUpdate=2 flag in the command line tool to group joints

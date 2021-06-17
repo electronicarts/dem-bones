@@ -38,7 +38,10 @@ mkdir build
 cd build
 cmake ..
 ```
-4. Build: `$ cmake --build . --config Release --target install`
+4. Build: 
+```
+cmake --build . --config Release --target install
+```
 
 > **Notes for Linux** 
 >   - You may need to install some libriries: [libxml2-dev](http://xmlsoft.org/) (run `$ sudo apt-get install libxml2-dev`) and [zlib-dev](https://zlib.net/) (run `$ sudo apt-get install zlib1g-dev`).
@@ -50,7 +53,7 @@ cmake ..
 >   - Apple Clang (default compiler) does not support OpenMP and Eigen. We recommend using [LLVM](https://formulae.brew.sh/formula/llvm). 
 >     Assuming LLVM is installed in the default path: `/usr/local/opt/llvm/bin`, instead of `cmake ..`, you can run: 
 >     ```
->     $ cmake -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ ..
+>     cmake -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ ..
 >     ```
 >
 >   - The pre-compiled tool `bin/DemBones` requires dynamic [libomp for LLVM](https://openmp.llvm.org/). If you have an error messeage related to OpenMP, 

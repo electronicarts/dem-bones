@@ -94,7 +94,7 @@ The skinning weights smoothing regularization was published in the paper:
 We are a cross-disciplinary team within EA Worldwide Studios.<br>
 Our mission is to explore, build and help define the future of interactive entertainment.</p>
 
-Dem Bones was created by Binh Le (ble@ea.com). The [logo](logo/DemBones.png) was designed by Phuong Le.
+Dem Bones was created by Binh Le (<a href="https://binh.graphics/">binh.graphics</a>). The [logo](logo/DemBones.png) was designed by Phuong Le (<a href="https://www.phuongle.com/">phuongle.com</a>).
 
 ## Contributing
 

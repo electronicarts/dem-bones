@@ -184,6 +184,8 @@ int main(int argc, char** argv) {
 	model.nIters=nIters.getValue();
 	model.nTransIters=nTransIters.getValue();
 	model.nWeightsIters=nWeightsIters.getValue();
+	model.tolerance=tolerance.getValue();
+	model.patience=patience.getValue();
 	model.bindUpdate=bindUpdate.getValue();
 	model.transAffine=transAffine.getValue();
 	model.transAffineNorm=transAffineNorm.getValue();
